@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seni Üzdüğüm İçin Üzgünüm ❤️</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            overflow-x: hidden;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+        }
+        
+        .header {
+            margin-bottom: 40px;
+        }
+        
+        .title {
+            font-size: 2.8rem;
+            color: #ff6b8b;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(255, 107, 139, 0.3);
+            animation: fadeInDown 1.5s ease;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: #a9b7d0;
+            opacity: 0.9;
+        }
+        
+        .heart-container {
+            margin: 50px auto;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .broken-heart-emoji {
+            font-size: 120px;
+            animation: floatHeart 3s infinite ease-in-out;
+            filter: drop-shadow(0 0 10px rgba(255, 107, 139, 0.5));
+            transition: all 0.5s ease;
+        }
+        
+        .heart-container:hover .broken-heart-emoji {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 20px rgba(255, 107, 139, 0.8));
+            animation: heartbeat 1s infinite;
+        }
+        
+        .message-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .message {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #e6e9f0;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .apology-line {
+            font-size: 1.4rem;
+            color: #ff8fa3;
+            font-style: italic;
+            margin: 25px 0;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+        
+        .click-instruction {
+            margin-top: 30px;
+            color: #a9b7d0;
+            font-size: 1.1rem;
+            animation: fadeInUp 2s ease;
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.3;
+            animation: float 8s infinite linear;
+        }
+        
+        @keyframes floatHeart {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg);
+            }
+            50% { 
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1.2); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1.2); }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .title { font-size: 2.2rem; }
+            .message { font-size: 1.1rem; }
+            .apology-line { font-size: 1.2rem; }
+            .broken-heart-emoji { font-size: 100px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="title">İlyas' dan İlayda'sına Sevgilerle</h1>
+            <p class="subtitle">Kalbini kırdıysam özür dilerim</p>
+        </div>
+        
+        <div class="heart-container" id="heartContainer">
+            <div class="broken-heart-emoji">💔</div>
+        </div>
+        
+        <div class="message-container">
+            <p class="message">Bazen farkında olmadan, bazen de yanlış anlaşılmalar yüzünden kalpler kırılabiliyor. Senin kalbini kırdıysam, bunu hiç istemediğimi bilmeni isterim.</p>
+            
+            <p class="apology-line">"Özür dilemek yetmez biliyorum ama..."</p>
+            
+            <p class="message">Sen benim için çok değerlisin. Her gülüşün, her bakışın benim için anlamlı. Üzdüysem seni, lütfen affet. Yeniden güvenini kazanmak için her şeyi yapmaya hazırım.</p>
+            
+            <p class="apology-line">Seni seviyorum ve bu her şeyden daha gerçek</p>
+            
+            <p class="message">Lütfen bu kırık kalp emojisini tıkla ve sana olan sevgimi, pişmanlığımı daha iyi anlatayım. Sadece bir şans daha ver, her şeyi düzeltmek istiyorum.</p>
+        </div>
+        
+        <p class="click-instruction">Kırık kalp emojisine tıkla ve sevgimi gösterdiğim sayfaya git</p>
+    </div>
+
+    <script>
+        // Uçan kalpler oluşturma
+        function createFloatingHearts() {
+            const container = document.getElementById('floatingHearts');
+            const heartCount = 20;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('floating-heart');
+                heart.innerHTML = '❤️';
+                
+                const left = Math.random() * 100;
+                const animationDelay = Math.random() * 8;
+                const animationDuration = 6 + Math.random() * 6;
+                const fontSize = 15 + Math.random() * 25;
+                
+                heart.style.left = `${left}%`;
+                heart.style.animationDelay = `${animationDelay}s`;
+                heart.style.animationDuration = `${animationDuration}s`;
+                heart.style.fontSize = `${fontSize}px`;
+                heart.style.color = `rgba(255, ${100 + Math.random() * 155}, ${100 + Math.random() * 155}, 0.3)`;
+                
+                container.appendChild(heart);
+            }
+        }
+        
+        // Kalbe tıklama olayı
+        document.getElementById('heartContainer').addEventListener('click', function() {
+            // Animasyonu başlat
+            const heartEmoji = document.querySelector('.broken-heart-emoji');
+            heartEmoji.style.animation = 'heartbeat 0.5s 3';
+            heartEmoji.style.transform = 'scale(1.5)';
+            
+            // 1.5 saniye sonra yönlendirme
+            setTimeout(function() {
+                window.location.href = "healing.html";
+            }, 1500);
+        });
+        
+        window.onload = function() {
+            createFloatingHearts();
+        };
+    </script>
+</body>
+</html>

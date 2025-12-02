@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senin İçin İyileşiyorum ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+            min-height: 100vh;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow-y: auto; /* SCROLL EKLEDİM */
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 40px 20px; /* PADDING EKLEDİM */
+            min-height: 100vh; /* TÜM SAYFA BOYU */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* ORTALAMA */
+            z-index: 10;
+        }
+        
+        .content-wrapper {
+            margin: auto 0; /* İÇERİĞİ ORTALA */
+        }
+        
+        .healed-heart {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(to bottom, #ff3366, #ff0066);
+            position: relative;
+            margin: 30px auto;
+            transform: rotate(-45deg);
+            animation: heartbeat 1.5s infinite;
+            box-shadow: 0 0 40px rgba(255, 51, 102, 0.8);
+            border-radius: 20px 0;
+            cursor: pointer;
+        }
+        
+        .healed-heart:before,
+        .healed-heart:after {
+            content: '';
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(to bottom, #ff3366, #ff0066);
+            border-radius: 50%;
+            position: absolute;
+        }
+        
+        .healed-heart:before {
+            top: -75px;
+            left: 0;
+        }
+        
+        .healed-heart:after {
+            top: 0;
+            left: 75px;
+        }
+        
+        .message-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .love-title {
+            font-size: 2.2rem;
+            color: #ff3366;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(255, 51, 102, 0.5);
+        }
+        
+        .promise {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #e6e9f0;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 3px solid #ff3366;
+            background: rgba(255, 51, 102, 0.1);
+            border-radius: 0 10px 10px 0;
+            text-align: left;
+        }
+        
+        /* GİFT BÖLÜMÜ */
+        .gift-section {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 2px solid rgba(255, 51, 102, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 51, 102, 0.2);
+        }
+        
+        .gift-title {
+            font-size: 1.6rem;
+            color: #ffcc00;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .gift-button {
+            margin: 20px auto 0;
+            padding: 15px 40px;
+            background: linear-gradient(to right, #ffcc00, #ff9900);
+            color: #1a1a2e;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(255, 204, 0, 0.5);
+            display: block;
+            width: 250px;
+        }
+        
+        .gift-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(255, 204, 0, 0.7);
+            background: linear-gradient(to right, #ff9900, #ffcc00);
+        }
+        
+        .back-button {
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: transparent;
+            color: #ff8fa3;
+            border: 2px solid #ff8fa3;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background: rgba(255, 143, 163, 0.2);
+        }
+        
+        .hearts-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .bg-heart {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0.1;
+            animation: fall 10s infinite linear;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: rotate(-45deg) scale(1); }
+            25% { transform: rotate(-45deg) scale(1.1); }
+            50% { transform: rotate(-45deg) scale(1); }
+            75% { transform: rotate(-45deg) scale(1.05); }
+            100% { transform: rotate(-45deg) scale(1); }
+        }
+        
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.1;
+            }
+            90% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .healed-heart:hover {
+            animation: heartbeatFast 0.8s infinite;
+        }
+        
+        @keyframes heartbeatFast {
+            0% { transform: rotate(-45deg) scale(1); }
+            50% { transform: rotate(-45deg) scale(1.15); }
+            100% { transform: rotate(-45deg) scale(1); }
+        }
+        
+        /* MOBİL UYUMLULUK */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .love-title {
+                font-size: 1.8rem;
+            }
+            
+            .promise {
+                font-size: 1.1rem;
+            }
+            
+            .gift-title {
+                font-size: 1.4rem;
+            }
+            
+            .gift-button {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .healed-heart {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .healed-heart:before,
+            .healed-heart:after {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .healed-heart:before {
+                top: -60px;
+            }
+            
+            .healed-heart:after {
+                left: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-background" id="heartsBackground"></div>
+    
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="healed-heart" id="healedHeart"></div>
+            
+            <h1 class="love-title">Kırgınlığın Biraz Olsun Geçmiştir Umarım...</h1>
+            
+            <div class="message-box">
+                <p class="promise">Seni üzdüğüm için pişmanım. Sadece senin mutluluğunu istiyorum ve bunun için elimden geleni yapacağım.</p>
+                
+                <p class="promise">Her ne olursa olsun, seninle olan bağımızın her şeyden değerli olduğunu biliyorum. Bu bağı korumak için söz veriyorum.</p>
+                
+                <p class="promise">Hatalarımdan ders aldım. Artık daha iyi biriyim, çünkü senin sevgine layık olmak istiyorum.</p>
+                
+                <p class="promise">Gülüşün dünyamı aydınlatan tek şey. O gülüşü geri kazanmak için her şeyi yaparım.</p>
+            </div>
+            
+            <!-- HEDİYE BÖLÜMÜ -->
+            <div class="gift-section">
+                <h2 class="gift-title">Senin için bir hediyem var! 🎁</h2>
+                <p style="color: #e6e9f0; margin-bottom: 20px; font-size: 1.1rem;">Bu özel sürprizi senin için hazırladım...</p>
+                
+                <button class="gift-button" id="giftButton">Tıkla ve gör</button>
+            </div>
+            
+            <button class="back-button" onclick="window.location.href='index.html'">Geri Dön</button>
+        </div>
+    </div>
+
+    <script>
+        // Arka plan kalplerini oluştur
+        function createBackgroundHearts() {
+            const container = document.getElementById('heartsBackground');
+            const heartCount = 25;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('bg-heart');
+                heart.innerHTML = '❤️';
+                
+                const left = Math.random() * 100;
+                const animationDelay = Math.random() * 10;
+                const animationDuration = 8 + Math.random() * 8;
+                const fontSize = 20 + Math.random() * 40;
+                const colorValue = 100 + Math.random() * 155;
+                
+                heart.style.left = `${left}%`;
+                heart.style.animationDelay = `${animationDelay}s`;
+                heart.style.animationDuration = `${animationDuration}s`;
+                heart.style.fontSize = `${fontSize}px`;
+                heart.style.color = `rgba(255, ${colorValue}, ${colorValue}, 0.1)`;
+                
+                container.appendChild(heart);
+            }
+        }
+        
+        // Hediye butonu tıklama olayı
+        document.getElementById('giftButton').addEventListener('click', function() {
+            // BU SATIRI DEĞİŞTİR: Kendi hediye sayfanın linkini buraya yaz
+            window.location.href = "https://codetap.org/project/flowers-growth-animation/live-preview";
+            
+            // Alternatif: Yeni sekmede açmak için
+            // window.open("https://ornek-hediye-linki.com", "_blank");
+        });
+        
+        // Kalbe tıklama efekti
+        document.getElementById('healedHeart').addEventListener('click', function() {
+            this.style.animation = 'heartbeatFast 0.5s 3';
+            
+            setTimeout(() => {
+                this.style.animation = 'heartbeat 1.5s infinite';
+            }, 1500);
+        });
+        
+        window.onload = function() {
+            createBackgroundHearts();
+        };
+    </script>
+</body>
+</html>
