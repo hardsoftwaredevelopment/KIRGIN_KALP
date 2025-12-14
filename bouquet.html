@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Senin İçin Bir Buket</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top, #ffe1ec, #fff 60%);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.bouquet {
+  position: relative;
+  width: 420px;
+  height: 560px;
+}
+
+/* FLOWERS */
+.flower {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+}
+
+.petal {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+}
+
+.p1 { top: 0; left: 24px; }
+.p2 { top: 24px; left: 0; }
+.p3 { top: 24px; right: 0; }
+.p4 { bottom: 0; left: 24px; }
+.p5 { top: 10px; left: 10px; transform: rotate(45deg); }
+
+.center {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(circle, #ffd54f, #f9a825);
+  border-radius: 50%;
+}
+
+.stem {
+  position: absolute;
+  top: 80px;
+  left: 42px;
+  width: 6px;
+  height: 180px;
+  background: linear-gradient(to bottom, #2e7d32, #66bb6a);
+}
+
+/* COLORS */
+.pink .petal { background: #f48fb1; }
+.red .petal { background: #ef5350; }
+.purple .petal { background: #ba68c8; }
+.white .petal { background: #f5f5f5; }
+
+/* WRAP */
+.wrap {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  width: 380px;
+  height: 230px;
+  background: linear-gradient(135deg, #f8bbd0, #fce4ec);
+  clip-path: polygon(0 0, 100% 0, 70% 100%, 30% 100%);
+  box-shadow: 0 -10px 25px rgba(0,0,0,0.15);
+}
+
+.ribbon {
+  position: absolute;
+  bottom: 80px;
+  left: 150px;
+  width: 120px;
+  height: 30px;
+  background: #c2185b;
+  border-radius: 15px;
+}
+
+/* MESSAGE */
+.message {
+  position: absolute;
+  bottom: -70px;
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
+  color: #ad1457;
+  letter-spacing: 1px;
+}
+</style>
+</head>
+<body>
+
+<div class="bouquet">
+
+  <!-- FLOWERS -->
+  <div class="flower pink" style="top:40px; left:160px;">
+    <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div><div class="petal p5"></div>
+    <div class="center"></div><div class="stem"></div>
+  </div>
+
+  <div class="flower red" style="top:80px; left:90px; transform:scale(0.95)">
+    <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div><div class="petal p5"></div>
+    <div class="center"></div><div class="stem"></div>
+  </div>
+
+  <div class="flower purple" style="top:80px; left:230px; transform:scale(0.95)">
+    <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div><div class="petal p5"></div>
+    <div class="center"></div><div class="stem"></div>
+  </div>
+
+  <div class="flower white" style="top:120px; left:40px; transform:scale(0.85)">
+    <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div><div class="petal p5"></div>
+    <div class="center"></div><div class="stem"></div>
+  </div>
+
+  <div class="flower pink" style="top:120px; left:300px; transform:scale(0.85)">
+    <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div><div class="petal p5"></div>
+    <div class="center"></div><div class="stem"></div>
+  </div>
+
+  <div class="flower red" style="top:160px; left:160px; transform:scale(0.8)">
+    <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div><div class="petal p5"></div>
+    <div class="center"></div><div class="stem"></div>
+  </div>
+
+  <!-- WRAP -->
+  <div class="wrap"></div>
+  <div class="ribbon"></div>
+
+  <!-- MESSAGE -->
+  <div class="message">Kalbim sana her gün yeniden açıyor</div>
+
+</div>
+
+</body>
+</html>
