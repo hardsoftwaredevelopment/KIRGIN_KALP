@@ -313,7 +313,10 @@
         // Hediye butonu tıklama olayı
         document.getElementById('giftButton').addEventListener('click', function() {
             // BU SATIRI DEĞİŞTİR: Kendi hediye sayfanın linkini buraya yaz
-            window.location.href = "https://codetap.org/project/flowers-growth-animation/live-preview";
+           document.body.classList.add("fade-out");
+setTimeout(() => {
+  window.location.href = "bouquet.html";
+}, 600);
             
             // Alternatif: Yeni sekmede açmak için
             // window.open("https://ornek-hediye-linki.com", "_blank");
@@ -333,4 +336,5 @@
         };
     </script>
 </body>
+
 </html>
